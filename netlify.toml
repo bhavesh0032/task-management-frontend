@@ -1,12 +1,17 @@
 [
 build
 ]
-command = "npm run build"
-publish = "build"
+  command = "npm run build"
+  publish = "build"
+
+[
+build.environment
+]
+  NODE_VERSION = "14" # or whichever version you're using
 
 [[
 redirects
 ]]
-from = "/*"
-to = "/index.html"
-status = 200
+  from = "/*"
+  to = "/index.html"
+  status = 200
