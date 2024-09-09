@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline';
+import Login from './components/Login'
+import Signup from './components/Signup';
+import Dashboard from './components/Dashboard';
+import { AuthProvider, AuthContext } from './contexts/AuthContext';
+
+const theme = createTheme();
+
+
+
+const PrivateRoute = ({ children }) => {
+  const { isAuthenticated } = React.useContext(AuthContext);
+  return isAuthenticated ? children : <Navigate to="/login" />;
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/" element={<Navigate to="/login" replace />} />
+
+        </Routes>
+      </Router>
+    </AuthProvider>
+  </ThemeProvider>
   );
 }
 
-export default App;
+
+// function RequireAuth({ children }) {
+//   const { isAuthenticated } = React.useContext(AuthContext);
+//   return isAuthenticated ? children : <Navigate to="/login" replace />;
+// }
+
+
+export default App
