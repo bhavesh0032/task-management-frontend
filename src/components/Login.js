@@ -3,22 +3,22 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from '../axios';
 import { AuthContext } from '../contexts/AuthContext';
 import { Button, TextField, Typography, Container, Box, Alert } from '@mui/material'
-import { styled } from '@mui/material/styles'
+// import { styled } from '@mui/material/styles'
 
 
 
-const StyledForm = styled('form')(({ theme }) => ({
-    width: '100%',
-    marginTop: theme.spacing(1),
-  }));
+// const StyledForm = styled('form')(({ theme }) => ({
+//     width: '100%',
+//     marginTop: theme.spacing(1),
+//   }));
   
-  const SubmitButton = styled(Button)(({ theme }) => ({
-    margin: theme.spacing(3, 0, 2),
-  }));
+//   const SubmitButton = styled(Button)(({ theme }) => ({
+//     margin: theme.spacing(3, 0, 2),
+//   }));
   
-  const GoogleButton = styled(Button)(({ theme }) => ({
-    margin: theme.spacing(2, 0, 2),
-  }));
+//   const GoogleButton = styled(Button)(({ theme }) => ({
+//     margin: theme.spacing(2, 0, 2),
+//   }));
   
   function Login() {
     const [email, setEmail] = useState('');

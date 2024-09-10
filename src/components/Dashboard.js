@@ -101,7 +101,7 @@ const Task = ({ task, onDelete, onEdit }) => {
   
     useEffect(() => {
       fetchTasks();
-    }, []);
+    });
   
 
     // useEffect(() => {
